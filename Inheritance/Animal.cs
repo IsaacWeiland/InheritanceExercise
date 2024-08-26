@@ -5,7 +5,6 @@ namespace Inheritance;
 
 public class Animal
 {
-    public  List<Animal> ZooStock { get; set; } = new List<Animal>();
     public string Name { get; set; }
     public bool IsMobile { get; set; }
     public string SleepCycle { get; set; }

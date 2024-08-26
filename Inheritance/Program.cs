@@ -8,7 +8,8 @@ namespace Inheritance
     {
         static void Main(string[] args)
         {
-            var zooAnimals = new Animal();
+            var zooBirds = new Bird();
+            var zooReptiles = new Reptile();
             var cockatoo = new Bird()
             {
                 Name = "cockatoo",
@@ -18,7 +19,7 @@ namespace Inheritance
                 FeatherColor = "white",
                 MatingCry = "scream"
             };
-            zooAnimals.ZooStock.Add(cockatoo);
+            zooBirds.BirdsList.Add(cockatoo);
             var chameleon = new Reptile()
             {
                 Name = "chameleon",
@@ -29,22 +30,40 @@ namespace Inheritance
                 DoesSlither = false,
                 SizeInches = 12
             };
-            zooAnimals.ZooStock.Add(chameleon);
-            foreach (var creature in zooAnimals.ZooStock)
+            zooReptiles.ReptileList.Add(chameleon);
+            foreach (var creature in zooReptiles.ReptileList)
             {
-                if (creature is Reptile)
-                {
-                    Console.WriteLine($"This is a {chameleon.Name}. It is {chameleon.CanCamoflauge} that they can camouflage.\n");
-                    Console.WriteLine($"It's {chameleon.DoesSlither} that {chameleon.Name} does sliver. This one is about {chameleon.SizeInches} long!");
-                    Reptile.IsHungry(creature);
-                }
+                string timeSleep = null;
 
-                if (creature is Bird)
+                    Console.WriteLine($"This is a {creature.Name}. It is {creature.CanCamoflauge} that they can camouflage.\n");
+                    Console.WriteLine($"It's {creature.DoesSlither} that {creature.Name} does sliver. This one is about {creature.SizeInches} long!");
+                    if (creature.SleepCycle == "diurnal")
+                    {
+                        timeSleep = "night";
+                    }
+                    else
+                    {
+                        timeSleep = "day";
+                    }
+                    Console.WriteLine($"The {creature.Name} is {creature.SleepCycle} which means that it sleeps at {timeSleep}");
+                    Reptile.IsHungry(creature);
+            }
+
+            foreach (var creature in zooBirds.BirdsList)
+            {
+                string timeSleep = null;
+                Console.WriteLine($"This is a {creature.Name} it has {creature.FeatherColor} feathers and makes the sound {creature.MatingCry}, and as you might've guess it is {creature.CanFly} that it can fly.");
+                if (creature.SleepCycle == "diurnal")
                 {
-                    Console.WriteLine($"This is a {cockatoo.Name} it has {cockatoo.FeatherColor} feathers and makes the sound {cockatoo.MatingCry}, and as you might've guess it is {cockatoo.CanFly} that it can fly.");
-                    Bird.MigrationSeason();
-                    Bird.IsHungry(creature);
+                    timeSleep = "night";
                 }
+                else
+                {
+                    timeSleep = "day";
+                }
+                Console.WriteLine($"The {creature.Name} is {creature.SleepCycle} which means that it sleeps at {timeSleep}");
+                Bird.MigrationSeason();
+                Bird.IsHungry(creature);
             }
            
             
